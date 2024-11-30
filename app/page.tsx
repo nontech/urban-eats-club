@@ -3,6 +3,7 @@
 import { useState } from "react";
 import ComparisonTable from "./components/ComparisonTable";
 import PlanSelector from "./components/PlanSelector";
+import WaitingListCard from "./components/WaitingListCard";
 
 type Plan = "S" | "M" | "L";
 
@@ -29,7 +30,7 @@ export default function Home() {
       </div>
 
       {/* Plans and Comparison Section */}
-      <div className="flex items-start gap-8">
+      <div className="flex items-start gap-8 mb-16">
         {/* Plan Selector */}
         <div className="flex-1">
           <PlanSelector
@@ -46,8 +47,14 @@ export default function Home() {
             mealsPerWeek={
               selectedPlan === "S" ? 2 : selectedPlan === "M" ? 3 : 5
             }
+            monthlyPrice={PLAN_PRICES[selectedPlan].costPerMonth}
           />
         </div>
+      </div>
+
+      {/* Waiting List Section */}
+      <div className="flex justify-center">
+        <WaitingListCard />
       </div>
     </main>
   );

@@ -1,7 +1,6 @@
 "use client";
 
 import PlanCost from "./PlanCost";
-import SavingsDisplay from "./SavingsDisplay";
 
 type Plan = "S" | "M" | "L";
 
@@ -54,7 +53,7 @@ export default function PlanSelector({
   return (
     <div className="flex flex-col gap-6">
       <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider">
-        Select a Membership
+        Select a Plan
       </h3>
       <div className="flex flex-col gap-4 w-full max-w-md">
         <div className="flex gap-2">
@@ -91,14 +90,9 @@ export default function PlanSelector({
           ))}
         </div>
       </div>
-      <PlanCost cost={planPrices[selectedPlan].costPerMonth} />
-      <SavingsDisplay
-        mealPrice={planPrices[selectedPlan].mealPrice}
-        mealsPerWeek={
-          plans.find((p) => p.id === selectedPlan)?.mealsPerWeek || 2
-        }
-        monthlyPrice={planPrices[selectedPlan].costPerMonth}
-      />
+      <div className="mt-4">
+        <PlanCost cost={planPrices[selectedPlan].costPerMonth} />
+      </div>
     </div>
   );
 }
